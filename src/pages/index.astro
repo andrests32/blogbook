@@ -1,0 +1,12 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.jsx";
+import BooksReviews from "../components/BooksReviews";
+import Reviews from"../components/Reviews"
+---
+
+<Layout title="Tinta & Razón">
+  <Hero client:load />
+  <Reviews client:only="react" />
+  <!-- <BooksReviews client:only="react" /> -->
+</Layout>
