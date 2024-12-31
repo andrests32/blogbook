@@ -51,7 +51,7 @@ const Hero = () => {
         >
           <img
             className="w-40 h-auto object-cover rounded-full"
-            src="/public/logo.avif"
+            src="/logo.avif"
             alt=""
           />
         </motion.div>
