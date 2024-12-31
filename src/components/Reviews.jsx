@@ -48,7 +48,9 @@ const Reviews = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div 
+    id="resenas"
+    className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">
         Opiniones
       </h1>
@@ -75,6 +77,5 @@ const Reviews = () => {
     </div>
   );
 };
-
 
 export default Reviews;
