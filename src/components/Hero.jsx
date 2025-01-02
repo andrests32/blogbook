@@ -73,14 +73,14 @@ const Hero = () => {
           </span>
         </motion.h1>
         <motion.p
-          className="text-xl text-gray-600 mb-8 max-w-2xl font-light italic lg:tracking-wide"
+          className="text-xl lg:text-3xl text-gray-600 mb-8 max-w-2xl font-light font-ui italic lg:tracking-wide"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.5, type: "spring", stiffness: 120 }}
         >
-          Aquí, cada página cuenta. Desde las voces clásicas hasta las nuevas
-          promesas de la literatura, mis reseñas te ayudarán a encontrar el
-          libro que te hable al alma.
+          "Vacía tus bolsillos en tu mente, que tu mente llenará tus bolsillos."
+          <br />
+          <strong>- Benjamin Franklin -</strong>
         </motion.p>
 
         {/* Botones de acción */}
