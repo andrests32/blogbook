@@ -1,17 +1,36 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, UserCircle, CalendarDays, BookOpen, Star, Clock, Hash } from 'lucide-react';
+import {
+  X,
+  UserCircle,
+  CalendarDays,
+  BookOpen,
+  Star,
+  Clock,
+  Hash
+} from "lucide-react";
 
 const ReviewDetail = ({ review, onClose }) => {
   if (!review) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-red-600 text-xl font-light">No se pudo cargar la reseña.</p>
+        <p className="text-red-600 text-xl font-light">
+          No se pudo cargar la reseña.
+        </p>
       </div>
     );
   }
 
-  const { Titulo, Autor, Fecha, Opinion, Portada, Calificacion, Duracion, ISBN } = review;
+  const {
+    Titulo,
+    Autor,
+    Fecha,
+    Opinion,
+    Portada,
+    Calificacion,
+    Duracion,
+    ISBN
+  } = review;
 
   return (
     <AnimatePresence>
@@ -53,13 +72,15 @@ const ReviewDetail = ({ review, onClose }) => {
             </div>
 
             <div className="p-6 bg-white flex-grow">
-              <h1 className="text-2xl font-bold mb-4 text-gray-800">{Titulo || "Sin título"}</h1>
+              <h1 className="text-2xl font-bold mb-4 text-gray-800">
+                {Titulo || "Sin título"}
+              </h1>
               <div className="flex items-center text-gray-600 mb-4">
                 <UserCircle size={20} className="mr-2 flex-shrink-0" />
                 <span className="font-medium mr-1">Autor:</span>
                 <span>{Autor || "Desconocido"}</span>
               </div>
-              
+
               <div className="mb-6 space-y-2">
                 <div className="flex items-center text-gray-600">
                   <CalendarDays size={18} className="mr-2 flex-shrink-0" />
@@ -84,11 +105,19 @@ const ReviewDetail = ({ review, onClose }) => {
                   </div>
                 )}
               </div>
-              
-              <div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Opinión</h3>
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  {Opinion || "Sin opinión disponible"}
+
+              <div className="bg-gray-50 p-6 rounded-lg shadow-md max-h-64 md:max-h-96 overflow-y-auto">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                  Opinión
+                </h3>
+                <p className="text-gray-700 text-lg leading-relaxed text-justify space-y-4">
+                  {Opinion
+                    ? Opinion.split("\n").map((paragraph, index) => (
+                        <span key={index} className="block mb-4">
+                          {paragraph}
+                        </span>
+                      ))
+                    : "Sin opinión disponible"}
                 </p>
               </div>
             </div>
@@ -112,7 +141,9 @@ const ReviewDetail = ({ review, onClose }) => {
             </div>
             {/* Contenedor del contenido (scrolleable) */}
             <div className="w-3/5 p-8 overflow-y-auto">
-              <h1 className="text-4xl font-bold mb-6 text-gray-800">{Titulo || "Sin título"}</h1>
+              <h1 className="text-4xl font-bold mb-6 text-gray-800">
+                {Titulo || "Sin título"}
+              </h1>
               <div className="mb-6">
                 <div className="flex items-center text-gray-700 text-xl mb-2">
                   <UserCircle size={28} className="mr-3 text-blue-500" />
@@ -124,7 +155,7 @@ const ReviewDetail = ({ review, onClose }) => {
                   <span>{Fecha || "Fecha no especificada"}</span>
                 </div>
               </div>
-              
+
               <div className="mb-8 space-y-3">
                 {Calificacion && (
                   <div className="flex items-center text-gray-700 text-lg">
@@ -145,12 +176,26 @@ const ReviewDetail = ({ review, onClose }) => {
                   </div>
                 )}
               </div>
-              
-              <div className="bg-gray-50 p-6 rounded-lg shadow-md">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">Opinión</h3>
-                <p className="text-gray-700 text-lg leading-relaxed text-justify">
-                  {Opinion || "Sin opinión disponible"}
-                </p>
+
+              <div className="flex flex-col justify-between h-full">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+                  Opinión
+                </h3>
+                <div className="flex-grow px-4 md:px-6">
+                  {Opinion ? (
+                    <div className="text-gray-800 text-base md:text-lg leading-relaxed text-justify space-y-4">
+                      {Opinion.split(/\n+/).map((paragraph, index) => (
+                        <p key={index} className="mb-4 first:mt-0">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-gray-500 italic">
+                      Sin opinión disponible
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -161,4 +206,3 @@ const ReviewDetail = ({ review, onClose }) => {
 };
 
 export default ReviewDetail;
-
