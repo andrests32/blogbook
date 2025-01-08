@@ -23,6 +23,8 @@ export async function GET() {
         ? `https:${item.fields.portada.fields.file.url}`
         : null,
       Fecha: item.fields?.fecha || "Fecha no especificada",
+      Valor: item.fields?.valor || 0,
+  Genero: item.fields?.genero || "Sin género especificado",
     }));
 
     return new Response(JSON.stringify(reviews), {
