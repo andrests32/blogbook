@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -32,11 +32,21 @@ const ReviewDetail = ({ review, onClose }) => {
     ISBN
   } = review;
 
+  useEffect(() => {
+    // Bloquear el desplazamiento de la página principal cuando el modal está abierto
+    document.body.style.overflow = "hidden";
+
+    // Restaurar el desplazamiento de la página principal cuando el modal se cierra
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 8 }}
+        animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50"
       >
@@ -47,7 +57,7 @@ const ReviewDetail = ({ review, onClose }) => {
           transition={{ type: "spring", damping: 50, stiffness: 500 }}
           className="bg-white w-full h-full md:rounded-2xl md:shadow-2xl md:w-[90vw] md:h-[90vh] md:max-w-6xl flex flex-col md:flex-row overflow-hidden relative"
         >
-          {/* Botón de cierre (visible en ambos diseños) */}
+          {/* Botón de cierre */}
           <button
             className="absolute top-4 right-4 z-20 text-gray-600 hover:text-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 rounded-full p-2 bg-slate-200/80"
             onClick={onClose}
@@ -181,7 +191,7 @@ const ReviewDetail = ({ review, onClose }) => {
                 <h3 className="text-2xl font-semibold text-gray-800 mb-6">
                   Opinión
                 </h3>
-                <div className="flex-grow px-4 md:px-6">
+                <div className="flex-grow px-4 py-8 md:px-6">
                   {Opinion ? (
                     <div className="text-gray-800 text-base md:text-lg leading-relaxed text-justify space-y-4">
                       {Opinion.split(/\n+/).map((paragraph, index) => (
