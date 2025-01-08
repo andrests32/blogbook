@@ -116,19 +116,25 @@ const ReviewDetail = ({ review, onClose }) => {
                 )}
               </div>
 
-              <div className="bg-gray-50 p-6 rounded-lg shadow-md max-h-64 md:max-h-96 overflow-y-auto">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              <div className="flex flex-col justify-between h-full">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-6">
                   Opinión
                 </h3>
-                <p className="text-gray-700 text-lg leading-relaxed text-justify space-y-4">
-                  {Opinion
-                    ? Opinion.split("\n").map((paragraph, index) => (
-                        <span key={index} className="block mb-4">
+                <div className="flex-grow px-4 py-4 md:px-6">
+                  {Opinion ? (
+                    <div className="text-gray-800 text-base md:text-lg leading-relaxed text-justify space-y-4">
+                      {Opinion.split(/\n+/).map((paragraph, index) => (
+                        <p key={index} className="mb-4 first:mt-0">
                           {paragraph}
-                        </span>
-                      ))
-                    : "Sin opinión disponible"}
-                </p>
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-gray-500 italic">
+                      Sin opinión disponible
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
