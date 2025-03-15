@@ -50,9 +50,6 @@ const Reviews = () => {
 
   return (
     <div id="resenas" className="container mx-auto px-4 py-8">
-      <h2 className="font-ui text-4xl lg:text-5xl lg:py-20 font-normal text-center text-gray-700 mb-4">
-        Mis Huellas Literarias
-      </h2>
       {/* <p className="lg:max-w-screen-xl m-auto font-light font-ui italic pb-10 tracking-wide lg:text-2xl lg:pb-20 text-pretty lg:text-center">
         Los libros tienen el poder de transformar tu perspectiva y llenar tu
         mente de nuevas ideas. En estas reseñas, encontrarás historias que
